@@ -14,6 +14,10 @@ from graphene_file_upload.django import FileUploadGraphQLView
 
 from jobs.sitemaps import Sitemaps, StaticViewSitemap
 from resume_cv.views import load_builder, update_builder
+#from django_otp.admin import OTPAdminSite
+
+#admin.site.__class__ = OTPAdminSite
+
 
 schema_view = get_schema_view(
     openapi.Info(

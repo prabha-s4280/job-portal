@@ -17,7 +17,7 @@ SECRET_KEY = "@pzqp#x^+#(olu#wy(6=mi9&a8n+g&x#af#apn07@j=5oin=xb"
 DEBUG = env("DEBUG", default=False)
 print("DEBUG: ", DEBUG)
 
-# DEBUG = True
+DEBUG = True
 SITE_ID = 1
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.flatpages",
     "django.contrib.staticfiles",
+    'django_otp',
+    'django_otp.plugins.otp_totp',
     "django.contrib.sitemaps",
     "django_elasticsearch_dsl",
     "drf_yasg",
@@ -60,6 +62,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
     "django_prometheus.middleware.PrometheusAfterMiddleware",
+    'django_otp.middleware.OTPMiddleware'
 ]
 
 ROOT_URLCONF = "jobs.urls"
@@ -131,6 +134,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+#ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -157,7 +162,7 @@ CORS_ALLOW_HEADERS = (
     "x-requested-with",
 )
 
-STATIC_URL = "/static/"
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # for production
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"

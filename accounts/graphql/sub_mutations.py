@@ -13,6 +13,7 @@ class EmployeeRegister(MutationMixin, DynamicArgsMixin, EmployeeRegisterMixin, g
         "email": "String",
         "password1": "String",
         "password2": "String",
+        "PhoneNumber": "String",
         "gender": "String",
     }
 
@@ -24,5 +25,6 @@ class EmployerRegister(MutationMixin, DynamicArgsMixin, EmployerRegisterMixin, g
         "company_address": "String",
         "email": "String",
         "password1": "String",
+        "PhoneNumber": "String",
         "password2": "String",
     }

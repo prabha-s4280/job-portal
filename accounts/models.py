@@ -13,6 +13,7 @@ class User(AbstractUser):
     email = models.EmailField(
         unique=True, blank=False, error_messages={"unique": "A user with that email already exists."}
     )
+    PhoneNumber=models.CharField(max_length=10,error_messages={"required":"Phone Number must be provided"})
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

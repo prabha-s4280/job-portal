@@ -1,0 +1,5 @@
+uritemplate==3.0.1
+urllib3==1.25.8
+virtualenv==20.4.7
+webencodings==0.5.1
+whitenoise==5.0.1

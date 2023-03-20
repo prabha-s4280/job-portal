@@ -19,6 +19,7 @@ class EmployeeRegistrationForm(UserCreationForm):
         self.fields["last_name"].label = "Last Name"
         self.fields["password1"].label = "Password"
         self.fields["password2"].label = "Confirm Password"
+        self.fields["PhoneNumber"].label = "Phone Number"
 
         # self.fields['gender'].widget = forms.CheckboxInput()
 
@@ -27,14 +28,16 @@ class EmployeeRegistrationForm(UserCreationForm):
         self.fields["email"].widget.attrs.update({"placeholder": "Enter Email"})
         self.fields["password1"].widget.attrs.update({"placeholder": "Enter Password"})
         self.fields["password2"].widget.attrs.update({"placeholder": "Confirm Password"})
+        self.fields["PhoneNumber"].widget.attrs.update({"placeholder":"Enter Phone Number"})
 
     class Meta:
         model = User
-        fields = ["first_name", "last_name", "email", "password1", "password2", "gender"]
+        fields = ["first_name", "last_name", "email", "PhoneNumber", "password1", "password2", "gender"]
         error_messages = {
             "first_name": {"required": "First name is required", "max_length": "Name is too long"},
             "last_name": {"required": "Last name is required", "max_length": "Last Name is too long"},
             "gender": {"required": "Gender is required"},
+            "PhoneNumber": {"required": "Phone Number is required","max_length":"Enter Valid Phone Number"},
         }
 
     def clean_gender(self):
@@ -52,7 +55,7 @@ class EmployeeRegistrationForm(UserCreationForm):
 
 
 class EmployerRegistrationForm(UserCreationForm):
-    first_name = forms.CharField(required=True)
+    first_name = forms.CharField(required=True) 
     last_name = forms.CharField(required=True)
 
     def __init__(self, *args, **kwargs):
@@ -61,19 +64,22 @@ class EmployerRegistrationForm(UserCreationForm):
         self.fields["last_name"].label = "Company Address"
         self.fields["password1"].label = "Password"
         self.fields["password2"].label = "Confirm Password"
+        self.fields["PhoneNumber"].label="Phone Number"
 
         self.fields["first_name"].widget.attrs.update({"placeholder": "Enter Company Name"})
         self.fields["last_name"].widget.attrs.update({"placeholder": "Enter Company Address"})
         self.fields["email"].widget.attrs.update({"placeholder": "Enter Email"})
         self.fields["password1"].widget.attrs.update({"placeholder": "Enter Password"})
         self.fields["password2"].widget.attrs.update({"placeholder": "Confirm Password"})
+        self.fields["PhoneNumber"].widget.attrs.update({"placeholder":"Enter Phone Number"})
 
     class Meta:
         model = User
-        fields = ["first_name", "last_name", "email", "password1", "password2"]
+        fields = ["first_name", "last_name", "PhoneNumber", "email", "password1", "password2"]
         error_messages = {
             "first_name": {"required": "First name is required", "max_length": "Name is too long"},
             "last_name": {"required": "Last name is required", "max_length": "Last Name is too long"},
+            "PhoneNumber": {"required":"Enter Phone Number","max_length":"Enter Correct Number"},
         }
 
     def save(self, commit=True):
